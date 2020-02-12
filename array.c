@@ -1,76 +1,47 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void search(int arr[], int key , int n)
+int first_occ(int arr[], int key , int n)
 	{
-	int flag,count=0,first=0,last=n-1,f_o,l_o;
-	int middle=(first+last)/2;
+	int first=0,last=n-1,mid,f_o=-1;
 	while(first<=last)
-		{
-		if(key>arr[middle])
-			{
-			first=middle;
-			last=n-1;
-			middle=(first+last)/2;
-			}
-		else if(key<arr[middle])
-			{
-			first = 0;
-			last= middle;
-			middle= (first+last)/2;
-			}
-		else
-			{
-			if(arr[middle]==key && arr[middle+1]>key)
-				{
-				l_o=middle;
-				while(arr[middle]!=key)
-				{
-				count++;
-				first=0;
-				last=middle;
-				middle=(first+last)/2;
-				}
-				f_o=middle;
-				}
-			else if(arr[middle]==key && arr[middle-1]<key)
-				{
-				f_o=middle;
-				while(arr[middle]!=key)
-				{
-				count++;
-				first=middle;
-				last=n-1;
-				middle=(first+last)/2;
-				}
-				l_o=middle;
-				}
-			else
-				{
-				while(arr[middle]!=key)
-				{
-				count++;
-				first=0;
-				last=middle;
-				middle=(first+last)/2;
-				}
-				f_o=middle;
-				while(arr[middle]!=key)
-				{
-				count++;
-				first=middle;
-				last=n-1;
-				middle=(first+last)/2;
-				}
-				l_o=middle;
-				}
-			}
-		}
+        {
+            mid=(first+last)/2;
+            if(arr[mid]==key){
+                f_o= mid;
+                last = mid-1;
+            }
+            else if(key>arr[mid]){
+                first = mid+1;
+            }
+            else{
+                last = mid -1;
+            }
+        }
+    return f_o;
 	}
-		
-void main()
+int last_occ(int arr[], int key , int n)
+    {
+        int l_o=-1,first=0,last=n-1,mid;
+        while(first<=last){
+            mid = (first+last)/2;
+            if(arr[mid]==key){
+			l_o=mid;
+			first=mid+1;
+            }
+            else if(key>arr[mid]){
+			first=mid+1;
+            }
+            else {
+			last=mid-1;
+            }
+        }
+    return l_o;
+    }
+
+int main()
 	{
-	int arr[100],n,key;
+	int arr[100],n,key,fir_occ,las_occ,count=-1;
 	printf("Enter the number of elements:");
 	scanf("%d",&n);
 	printf("Enter the elements:");
@@ -80,17 +51,11 @@ void main()
 		}
 	printf("Enter the key:");
 	scanf("%d",&key);
-	search(arr,key,n);
+	fir_occ = first_occ(arr,key,n);
+	las_occ = last_occ(arr,key,n);
+	count = las_occ - fir_occ;
+	printf("%d\n",fir_occ);
+	printf("%d\n",las_occ);
+	printf("%d",count+1);
+	return 0;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-					 
-			
-		
