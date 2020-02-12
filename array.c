@@ -23,7 +23,7 @@ void search(int arr[], int key , int n)
 			{
 			if(arr[middle]==key && arr[middle+1]>key)
 				{
-				f_o=middle;
+				l_o=middle;
 				while(arr[middle]!=key)
 				{
 				count++;
@@ -31,11 +31,11 @@ void search(int arr[], int key , int n)
 				last=middle;
 				middle=(first+last)/2;
 				}
-				l_o=middle;
+				f_o=middle;
 				}
-			else if(arr[middle]==key && arr[middle+1]>key)
+			else if(arr[middle]==key && arr[middle-1]<key)
 				{
-				l_o=middle;
+				f_o=middle;
 				while(arr[middle]!=key)
 				{
 				count++;
@@ -43,7 +43,7 @@ void search(int arr[], int key , int n)
 				last=n-1;
 				middle=(first+last)/2;
 				}
-				f_o=middle;
+				l_o=middle;
 				}
 			else
 				{
@@ -66,6 +66,7 @@ void search(int arr[], int key , int n)
 				}
 			}
 		}
+	}
 		
 void main()
 	{
@@ -79,7 +80,7 @@ void main()
 		}
 	printf("Enter the key:");
 	scanf("%d",&key);
-	search(arr[],key,n);
+	search(arr,key,n);
 	}
 	
 	
