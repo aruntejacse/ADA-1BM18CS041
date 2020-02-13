@@ -27,8 +27,7 @@ void main()
 	{
 	clock_t start,end,ran;
 	double total;
-	int arr[100],n;
-	start = clock();
+	int arr[10000],n;
 	printf("Enter the number of elements:");
 	scanf("%d",&n);
 	printf("Entering the elements...\n");
@@ -37,6 +36,7 @@ void main()
 		ran = rand()%100;
 		arr[i]=ran;
 		}
+	start = clock();
 	bubblesort(arr,n);
 	end=clock();
 	total=(double)(start-end)/CLOCKS_PER_SEC;
