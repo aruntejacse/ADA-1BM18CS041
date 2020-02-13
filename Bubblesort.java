@@ -36,5 +36,7 @@ public class Bubblesort
 		long endTime = System.nanoTime();
 		long durationInNano = (endTime - startTime);
 		System.out.println(durationInNano);
+		long durationInMillis = TimeUnit.NANOSECONDS.toMillis(durationInNano);
+		System.out.println(durationInMillis);
 		}
 	}
