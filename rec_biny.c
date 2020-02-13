@@ -27,6 +27,8 @@ int rec_biny(int arr[],int f,int l,int key)
 void main()
 	{
 	int n,arr[10000],key,ran,flag=0;
+	clock_t start,end;
+	double total;
 	printf("Enter the number of elements:");
 	scanf("%d",&n);
 	for(int i =0;i<n;i++)
@@ -35,7 +37,9 @@ void main()
 		}
 	printf("Enter key:");
 	scanf("%d",&key);
+	start = clock();
 	flag=rec_biny(arr,0,n-1,key);
+	end=clock();
 	if(flag)
 		{
 		printf("Found");
@@ -44,6 +48,8 @@ void main()
 		{
 		printf("Not Found");
 		}
+	total=(double)(start-end)/CLOCKS_PER_SEC;
+	printf("%f",total);
 	}
 	
 	
