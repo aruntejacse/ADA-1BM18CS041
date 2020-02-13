@@ -8,8 +8,8 @@ public class Bubblesort
 		{
 		Scanner se = new Scanner(System.in);
 		Random rand = new Random();
-		long startTime = System.nanoTime();
 		int temp,n;
+		long startTime,endTime;
 		System.out.println("Enter the number of elements:");
 		n=se.nextInt();
 		int arr[]=new int[n];
@@ -17,6 +17,7 @@ public class Bubblesort
 		{
 		arr[i]=rand.nextInt(n);
 		}
+		startTime = System.nanoTime();
 		for(int i =0;i<n;i++)
 			{
 			for(int j = i;j<n;j++)
@@ -29,11 +30,11 @@ public class Bubblesort
 					}
 				}
 			}
+		endTime = System.nanoTime();
 		for(int i=0;i<n;i++)
 			{
 			System.out.println(arr[i]);
 			}
-		long endTime = System.nanoTime();
 		long durationInNano = (endTime - startTime);
 		System.out.println(durationInNano);
 		long durationInMillis = TimeUnit.NANOSECONDS.toMillis(durationInNano);
