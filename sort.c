@@ -25,9 +25,9 @@ void bubblesort(int arr[],int n)
 
 void main()
 	{
-	clock_t start,end,ran;
+	clock_t start,end;
 	double total;
-	int arr[10000],n;
+	int arr[10000],n,ran;
 	printf("Enter the number of elements:");
 	scanf("%d",&n);
 	printf("Entering the elements...\n");
